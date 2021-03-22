@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <RootNamespace>mxwlf.io.filesystem</RootNamespace>
+        <AssemblyName>mxwlf.io.filesystem</AssemblyName>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="local" />
+    </ItemGroup>
+
+</Project>
