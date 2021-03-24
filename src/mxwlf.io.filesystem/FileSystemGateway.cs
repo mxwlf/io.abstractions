@@ -14,10 +14,8 @@ namespace mxwlf.io.filesystem
                 throw new ArgumentException("The provided container Uri is not valid.", nameof(containerUri));
             }
 
-            foreach (Directory.EnumerateDirectories(containerUri))
-            {
-                
-            }
+            throw new NotImplementedException();
+            
         }
 
         public Task<bool> isValid(string containerUri)

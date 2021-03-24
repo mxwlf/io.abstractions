@@ -9,38 +9,29 @@ namespace mxwlf.io.filesystem
     {
         private IEnumerable<IContainerContents> _contents;
         private readonly IFileSystemGateway _fileSystemGateway;
-        private string _containerUri;
+        private readonly string _containerUri;
         
         
         
-        protected Container(IFileSystemGateway fileSystemGateway)
+        protected Container(IFileSystemGateway fileSystemGateway, string containerUri)
         {
             _fileSystemGateway = fileSystemGateway ?? throw new ArgumentNullException(nameof(fileSystemGateway));
+            _containerUri = containerUri;
         }
         
-        
-        
-
 
         public IEnumerator<IContainerContents> GetEnumerator() => Contents.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => Contents.GetEnumerator();
 
-        private static async Task<IEnumerable<IContainerContents>> GetContents(IFileSystemGateway fileSystemGateway, string containerUri)
+        private async Task<IEnumerable<IContainerContents>> GetContents(IFileSystemGateway fileSystemGateway, string containerUri)
         {
-            return await fileSystemGateway.GetContainerContents(containerUri).ConfigureAwait(false);
+             return await fileSystemGateway.GetContainerContents(containerUri).ConfigureAwait(false);
         }
 
         public IEnumerable<IContainerContents> Contents
         {
-            get
-            {
-                if (null == _contents)
-                {
-                    // TODO: Implement lazy initialization.
-                    GetContents(this._fileSystemGateway, this._containerUri).Wait();
-                }
-            }
+            get { return _contents ??= GetContents(this._fileSystemGateway, this._containerUri).Result; }
         }
     }
 }

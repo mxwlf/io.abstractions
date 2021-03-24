@@ -6,8 +6,4 @@
         <AssemblyName>mxwlf.io.filesystem</AssemblyName>
     </PropertyGroup>
 
-    <ItemGroup>
-      <Folder Include="local" />
-    </ItemGroup>
-
 </Project>
