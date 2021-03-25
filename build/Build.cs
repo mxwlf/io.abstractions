@@ -1,4 +1,6 @@
 using Nuke.Common;
+using Nuke.Common.CI;
+using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.Execution;
 using Nuke.Common.Git;
 using Nuke.Common.IO;
@@ -9,7 +11,8 @@ using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
 [CheckBuildProjectConfigurations]
-[UnsetVisualStudioEnvironmentVariables]
+[ShutdownDotNetAfterServerBuild]
+[GitHubActions("Build", GitHubActionsImage.UbuntuLatest, InvokedTargets = new[] { nameof(Compile)})]
 class Build : NukeBuild
 {
     /// Support plugins are available for:
