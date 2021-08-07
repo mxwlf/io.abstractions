@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <RootNamespace>Mxwlf.IO.Abstractions</RootNamespace>
+        <PackageId>io.abstractions</PackageId>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\submodules\validation\src\mxwlf.validation\mxwlf.validation.csproj" />
+    </ItemGroup>
+
+</Project>
